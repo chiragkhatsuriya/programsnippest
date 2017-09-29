@@ -1,0 +1,334 @@
+{% extends 'public/home_layout.html' %}
+{% load static %}
+{% block content_block %}
+    	<style>
+				.center {
+				    margin: auto;
+				    width: 60%;
+				}
+				</style>
+				<style type="text/css">
+				@media screen and (min-width: 768px) {
+				div#mobile { display: none }
+				}
+				@media screen and (max-width: 768px) {
+				div#desktop { display: none }
+				}
+
+				  body{
+                     background-color: #F6F7F9;
+                }
+
+                .template-page{
+                    padding: 20px;
+                    border-top: 5px solid #3AD1BB;
+                }
+
+				</style>
+<!--
+    <div class="breadcrumb-wrap"
+         {% if single_page.main_image %}style="background-size:100%,100%;height:350px;background-image: linear-gradient(rgba(72, 82, 107, 0.7), rgba(72, 82, 107, 0.7)), url('
+                 {% static 'uploads/' %}{{ single_page.main_image }}')" {% endif %}>
+        <div class="container">
+            <div class="row">
+                <div>
+                    <ol class="breadcrumb">
+                        <li><a href="/">Home</a></li>
+                        {% if single_page.category.first %}
+                            <li>
+                                <a href="{% url 'single_page' single_page.category.first.slug %}">{{ single_page.category.first.title }}</a>
+                            </li>
+                        {% endif %}
+                        <li>{{ single_page.title }}</li>
+                    </ol>
+                </div>
+                {% if single_page.main_image_quote %}
+                    <div style="padding: 30px 0px;text-align: center;">
+                        <h2>{{ single_page.main_image_quote }}</h2>
+                    </div>
+                {% endif %}
+                {% if single_page.main_image_quote_sub %}
+                    <div style="text-align: center">
+                        <h4>{{ single_page.main_image_quote_sub }}</h4>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+-->
+    <div class="divide40"></div>
+    <div class="">
+        <div class="row">
+        <div style="text-align: center;">
+            <h1 style="font-size: 30px;    margin: 0;">{{ single_page.title }}</h1>
+        </div>
+    </div>
+        {% if single_page.cta %}
+                        {% if single_page.cta.url %}
+
+
+                    <div class="row">
+
+                                <div class="col-md-12 text-center">
+                                    <a class="btn btn-success btn-lg btn-cta" target="_blank"
+                                       href="{{ single_page.cta.url }}"><i class="fa fa-pencil-square-o"></i><span>{{ single_page.cta.name }}</span></a>
+
+                                </div>
+                            </div>
+
+
+                            <!--<div style="text-align: center;">
+                                <a class="btn btn-primary btn-lg"
+                                   href="{{ single_page.cta.url }}">{{ single_page.cta.name }}</a>
+                            </div>-->
+     <!--
+                            <div id="desktop" style="position: fixed; left:0px; right: 0px; bottom: 0px; z-index: 9999; text-align:center; background-color: #48526b;padding:4px;">
+                                <span id="closeButton" style="position: absolute; top: 14px; right: 5px; color:#dde1e9;cursor:pointer"><i class="fa fa-times-circle fa-2x"></i></span>
+                                <div>
+                                    <a class="btn btn-success btn-lg" style="border-radius:10px;font-size:15px;"
+                                       href="{{ single_page.cta.url }}"><i class="fa fa-pencil-square-o"></i><span>{{ single_page.cta.name }}</span></a>
+                                </div>
+                            </div>
+
+                            <div class="row" id="mobile" style="position: fixed; bottom: 1px;left:0px;right:0px; z-index: 9999;box-shadow: 0 5px 5px 5px #48526b;">
+                                 <a class="btn btn-success btn-block" style="font-size:18px;background-color: ##0eab54;padding:10px;white-space: normal;"
+                                   href="{{ single_page.cta.url }}"><i class="fa  fa-pencil-square-o"></i>{{ single_page.cta.name }}</a>
+                            </div>
+        -->
+                        {% endif %}
+                    {% endif %}
+
+
+        <!--
+    <div class="row">
+        <div class="col-md-12">
+            {% include "public/grammarly_horizontal.html" %}
+        </div>
+    </div> -->
+        <div class="row">
+            <div class="col-md-offset-1 col-lg-offset-1 col-sm-offset-1 col-lg-9 col-sm-9 col-md-9 template-page ">
+<!--
+                <div style="text-align: center;">
+                    <h1 style="  color: #04b2eb;font-size: 30px;">{{ single_page.title }}</h1>
+                </div>
+-->
+                <div class="col-md-4 col-sm-6 col-xs-10" id="videoForPage">
+                </div>
+
+                <div>
+
+                    {{ single_page.description|safe }}
+
+
+
+                </div><!--blog post-->
+
+            </div><!--col-->
+
+        <div class="col-md-2">
+            {% include "public/chegg_vertical_add.html" %}
+        </div>
+
+        </div>
+ <div class="helper-for-hide-data">
+         <div id="appTemplateName">{{single_page.slug}}</div>
+ </div>
+        {% if templates_count > 0 %}
+            <div class="divide80"></div>
+            <div class="row">
+                <div class="col-md-offset-1 col-lg-offset-1 col-sm-offset-1 col-lg-9 col-sm-9 col-md-9 ">
+                    <div class="center-heading">
+                        <h3>Related Templates</h3>
+                    </div>
+                    <div class="row">
+                        {% for template in templates %}
+
+                        <div class="col-sm-4 col-md-3 col-xs-12 {{ template.slug }} category-template-list-view-box"
+                             onclick="parent.window.location='{% url 'template_page' template.slug %}'">
+                            <div class="category-template-list-view text-center">
+                                {{ template.title }}
+                            </div>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+
+
+                </div>
+
+
+                <div class="col-sm-2"></div>
+            </div>
+            <div class="divide80"></div>
+            {% endif %}
+    </div>
+
+
+    <div id="desc_modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <div class="row">
+                        <div class="col-xs-7 col-sm-7 col-md-8">
+                            <h4 class="modal-title desc_title">Loading..</h4>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-3 keep-right">
+                            <a href="#" class="btn btn-3d btn-block btn-success writing-button">Start Writing</a>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 keep-right">
+                            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close icon-top-gap"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-body desc_body disable_copy">
+
+
+                </div>
+                <div class="row loader-container">
+                    <div class="loader col-xs-offset-5 col-md-offset-5 col-md-2"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+                <div class="right-arrow-navigation">
+                    <a onclick="travel_next(this)" href="#" class="page-button travel-arrow-navigation"><i
+                            class="fa fa-arrow-circle-o-right fa-5x"></i> </a>
+                </div>
+                <div class="left-arrow-navigation">
+                    <a onclick="travel_back(this)" href="#" class="page-button travel-arrow-navigation"><i
+                            class="fa fa-arrow-circle-o-left fa-5x"></i> </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+{% block css_extra %}
+    <style>
+    .pricing-simple {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
+.pricing-simple::after {
+  content: "";
+  border-radius: 5px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+
+.pricing-simple:hover::after {
+    opacity: 1;
+}
+    </style>
+{% endblock %}
+{% block js_extra %}
+    <script>
+				document.getElementById('closeButton').addEventListener('click', function(e) {
+				    e.preventDefault();
+				    this.parentNode.style.display = 'none';
+				}, false);
+				</script>
+     <script language="javascript" type="text/javascript">
+        function show_template_desc(id, title, slug) {
+            $(".page-button").attr("data-slug", "");
+            $(".page-button").hide();
+            $("#desc_modal").modal();
+            $("#desc_modal").find(".loader-container").show();
+            $(".desc_body").html("");
+            $(".desc_body").hide();
+            $(".desc_title").html("Loading..");
+            $(".writing-button").hide();
+            $.get("https://app.writewellapp.com/getTemplateDetails?id=" + id, function (data) {
+                $("#desc_modal").find(".loader-container").hide();
+                $(".page-button").show();
+                $(".desc_body").show();
+                $(".writing-button").show();
+                $(".writing-button").attr("href", "http://app.writewellapp.com/" + slug);
+                $(".page-button").attr("data-slug", slug)
+                $(data.data[0].section).each(function (key, value) {
+                    $(".desc_title").html(title);
+                    $(".desc_body").append("<h4>" + value.title_placeholder + "<h4>")
+                    $(".desc_body").append("<p>" + value.section_placeholder);
+                });
+
+            }, "json")
+
+
+        }
+        var iframe_obj;
+        function resizeIframe(obj) {
+            iframe_obj = obj;
+            iframe_height = obj.contentWindow.document.body.scrollHeight;
+            obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+            setInterval(function () {
+                if (iframe_height != iframe_obj.style.height) {
+                    obj.style.height = iframe_obj.contentWindow.document.body.scrollHeight + 'px';
+                    iframe_height = iframe_obj.contentWindow.document.body.scrollHeight;
+                }
+
+            }, 500);
+        }
+
+         $(document).ready(function () {
+             $('.desc_body').css({"max-height": $(window).innerHeight() * 80 / 100});
+            $(window).resize(function () {
+
+                $('.desc_body').css({"max-height": $(window).innerHeight() * 80 / 100});
+            });
+        });
+    </script>
+     <script>
+        function travel_next(obj) {
+            slug = $(obj).attr("data-slug");
+            if (slug) {
+                next_div = $("#grid-container").find("." + slug).next();
+                if (!$(next_div).length) {
+                    next_div = $("#grid-container").find(".cbp-item").first();
+
+                }
+
+                next_title = $(next_div).find(".preview-button").attr("data-title");
+                next_id = $(next_div).find(".preview-button").attr("data-id");
+                next_slug = $(next_div).find(".preview-button").attr("data-slug");
+                show_template_desc(next_id, next_title, next_slug);
+
+            }
+        }
+        function travel_back(obj) {
+            slug = $(obj).attr("data-slug");
+            if (slug) {
+                next_div = $("#grid-container").find("." + slug).prev();
+                if (!$(next_div).length) {
+                    next_div = $("#grid-container").find(".cbp-item").last();
+
+                }
+
+                next_title = $(next_div).find(".preview-button").attr("data-title");
+                next_id = $(next_div).find(".preview-button").attr("data-id");
+                next_slug = $(next_div).find(".preview-button").attr("data-slug");
+                show_template_desc(next_id, next_title, next_slug);
+
+            }
+        }
+    </script>
+{% endblock %}

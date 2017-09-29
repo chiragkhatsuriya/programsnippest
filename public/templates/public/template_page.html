@@ -1,0 +1,115 @@
+{% extends 'public/home_layout.html' %}
+{% load static %}
+{% block content_block %}
+
+<style>
+    body{
+         background-color: #F6F7F9;
+    }
+
+</style>
+
+<!--
+    <div class="breadcrumb-wrap">
+
+        <div class="container">
+            <div class="row">
+                <div>
+                    <ol class="breadcrumb">
+                        <li><a href="/">Home</a></li>
+
+                        <li>{{ template_page.title }}</li>
+                    </ol>
+                </div>
+
+            </div>
+        </div>
+    </div>
+-->
+<div class="divide40"></div>
+<div class="col-md-12"><h1></h1></div>
+
+
+<!--
+ <div class="divide20"></div>
+         <div class="row ">
+            <div class="col-lg-offset-1  col-sm-offset-1  col-md-offset-1 col-md-7 grammarly-horizontal-full-banner">
+                    <a  href="https://grammarly.go2cloud.org/aff_c?offer_id=3&aff_id=18739&file_id=1561" target="_blank"><img src="https://media.go2speed.org/brand/files/grammarly/3/lastminute728x90.png" width="728" height="90" border="0" /></a><img src="https://grammarly.go2cloud.org/aff_i?offer_id=3&file_id=1561&aff_id=18739" width="1" height="1" />
+            </div>
+             <div class="col-md-2 col-lg-2 col-sm-2"></div>
+        </div>
+-->
+<div class="row">
+
+    <div class="col-md-offset-1 col-lg-offset-1 col-sm-offset-1 col-lg-9 col-sm-9 col-md-9 template-page noselect">
+    <div class="divide20"></div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 ">
+                    <h1 class="template-page-title marginbottom0 margintop0">{{ template_page.title }}</h1>
+            </div>
+            <div class=" col-xs-12 col-sm-6 col-md-6 ">
+                <div class="template-header-action-button float-right">
+                    <a class="btn-app  btn-writing-help"  href="http://chggtrx.com/click.track?CID=286409&AFID=419221&ADID=1300996&SID=&tutorsubject=writing" target="_blank"><span>Get a Writing Tutor</span></a>
+                </div>
+                <div class="template-header-action-button float-right">
+                    <a class="btn-app  btn-get-template"  onclick="purchaseTemplate('{{template_page.slug}}')" target="_blank"></span></a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 ">
+                  &nbsp;
+            </div>
+             <div class="col-xs-12 col-sm-6 col-md-6 template-header-action-back float-right">
+                <a class="a-back"  href="javascript:history.back()">Back to all Templates</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 description">
+                <p>{{template_page.description}}</p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    {{ template_page.templates_html_string|safe }}
+                </div><!--blog post-->
+
+            </div><!--col-->
+
+        </div>
+
+        </div>
+     <div class="col-md-2 col-lg-2 col-sm-2">
+                {% include "public/chegg_vertical_add.html" %}
+     </div>
+
+    <div class="helper-for-hide-data">
+        <script src="https://checkout.stripe.com/v2/checkout.js"></script>
+        <div id="appTemplateId">{{template_page.ext_id}}</div>
+        <div id="appTemplateName">{{template_page.slug}}</div>
+        {% csrf_token %}
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="divide60"></div>
+    <div class="divide60"></div>
+    <div class="divide20"></div>
+</div>
+
+
+{% endblock %}
+{% block js_extra %}
+
+{% endblock %}

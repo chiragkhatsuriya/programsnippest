@@ -1,0 +1,413 @@
+{% extends 'public/home_layout.html' %}
+{% load static %}
+{% load utils %}
+{% block content_block %}
+
+<!--revolution slider-->
+<div class="grey-blue-back">
+    <section id="home" class="home-newsletter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 col-sm-offset-1  col-lg-9 col-lg-offset-1  text-center">
+                    <div class="newsletter-home-text">
+                        <h2>{% if single_page.title%}{{ single_page.title }}{% else %}Jumpstart your essay{% endif %}</h2>
+                        <p>{% if single_page.description|striptags %}{{ single_page.description|striptags }}{% else %}Explore the world's best writing templates{% endif %}</p>
+                        <form id="searchform" action="/search" method="get"
+                              class="subscribe-form  assan-newsletter">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="q" id="search_box"
+                                       placeholder="Search here e.g. argumentative, expository, research paper, ebook, blog post">
+                                <span class="input-group-btn">
+                                        <button class="btn btn-skin btn-radius btn-lg btn-search" type="submit">Search</button>
+                                    </span>
+                            </div>
+                        </form> <!--
+                        <div class="space-20"></div>
+                        <a data-toggle="modal" data-target="#video-popup" class="btn btn-lg btn-radius btn-white">Watch
+                            video<i class="fa fa-youtube-play"></i></a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!--revolution vertical slider end-->
+
+
+<div style="background-color: #F6F7F9;">
+    <div class="divide40"></div>
+    <div class="clear"></div>
+    <div class="row">
+        <div class="col-xl-offset-1 col-lg-offset-1  col-md-9">
+
+
+            <div class="container-fluid">
+
+                <div class="portfolio-cube">
+
+                    <div id="filters-container" class="cbp-l-filters-button">
+
+
+
+                        {% for page in main_pages %}
+                            {% if page.show_in_tags  == 1 %}
+                                    <div data-filter=".{{ page.slug }}"
+                                         class="cbp-filter-item  {{ forloop.counter0|getTabColorClassFromIndex }}  {% if page.slug == 'college-paper-templates-and-formats' %}cbp-filter-item-active{% endif %}">
+                                        {% if page.short_title %}{{ page.short_title }}{% else %}{{ page.title }}{% endif %}
+
+                                    </div>
+                            {% endif %}
+                        {% endfor %}
+
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="row cbp" id="grid-container">
+
+
+                                {% for page in main_pages %}
+                                       {% for template in page.templates.all|slice:"32" %}
+
+                                        <div class="cbp-item  {{ page.slug }} {{ template.slug }} category-template-list-view-box"
+                                             onclick="parent.window.location='{% url 'template_page' template.slug %}'"
+                                        >
+                                            <div class="category-template-list-view text-center">
+                                                {{ template.title }}
+                                            </div>
+                                        </div>
+
+                                        {% endfor %}
+{% endfor %}
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-2"></div>
+                    </div>
+
+<!--
+                    <div id="grid-container" class="cbp">
+                        {% for page in main_pages %}
+                        {% for template in page.templates.all|slice:"15" %}
+                        <div class="cbp-item {{ page.slug }} {{ template.slug }}"
+                             onclick="parent.window.location='{% url 'template_page' template.slug %}'">
+
+                            <div class="pricing-simple" style="height: 300px;">
+
+
+                                <h4 style=" height: 4em;overflow: hidden;">{{ template.title }}</h4>
+
+                                <p style="height: 15em;overflow: hidden;">{{ template.description }}</p>
+
+                            </div>
+
+
+                        </div>
+                        {% endfor %}
+                        {% endfor %}
+
+                    </div>
+-->
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="col-md-2">
+            <div class="chagg-add-vertical-landing-page">
+                <a href="http://chggtrx.com/click.track?CID=286409&amp;AFID=419221&amp;ADID=1300996&amp;SID=&amp;tutorsubject=writing"
+                   target="__blank">
+                    <div class="chagg-vertical-add"></div>
+                </a>
+            </div>
+        </div>
+    </div><!--.container-->
+</div>
+
+<div class="divide20"></div>
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2 center-title">
+        <i class="icon-quote"></i>
+        <h2>Testimonials</h2>
+        <p>Here’s what the media is saying about us.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 ">
+            <div class="testi-box left clearfix wow animated fadeInDown" data-wow-delay="0.1s">
+                            <span class="thumb">
+                                <img src="{% static 'img/lifehacker.gif' %}" class="img-circle img-responsive"
+                                     alt="lifehacker">
+                            </span>
+                <div class="testi-text">
+                    <p>"WriteWell’s best feature by far are the wealth of templates built-in to give you a quick
+                        start on your writing project. "</p>
+                    <h4>Lifehacker</h4>
+                    <span class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-empty"></i>
+                                </span>
+                </div>
+            </div><!--testi box end-->
+            <div class="testi-box left clearfix wow animated fadeInDown" data-wow-delay="0.2s">
+                            <span class="thumb">
+                                <img src="{% static 'img/bettercloud.png' %}" class="img-circle img-responsive"
+                                     alt="bettercloud">
+                            </span>
+                <div class="testi-text">
+                    <p>“WriteWell is a great Chrome App that provides tons of templates for business professionals,
+                        K12 schools, and colleges (basically, anyone). Each template comes with helpful tips,
+                        samples, and outlines to help guide you as you write. “</p>
+                    <h4>BetterCloud</h4>
+                    <span class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-empty"></i>
+                                </span>
+                </div>
+            </div><!--testi box end-->
+        </div><!--col end-->
+        <div class="col-sm-6 ">
+            <div class="testi-box right clearfix wow animated fadeInDown" data-wow-delay="0.3s">
+                            <span class="thumb">
+                                <img src="{% static 'img/tribeboost.png' %}" class="img-circle img-responsive"
+                                     alt="tribeboost">
+                            </span>
+                <div class="testi-text">
+                    <p>"WriteWell is a great tool that streamlines and simplifies the content creation process,
+                        regardless of past writing skill or experience."</p>
+                    <h4>TribeBoost</h4>
+                    <span class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-empty"></i>
+                                </span>
+                </div>
+            </div><!--testi box end-->
+            <div class="testi-box right clearfix wow animated fadeInDown" data-wow-delay="0.4s">
+                            <span class="thumb">
+                                <img src="{% static 'img/docurated.jpg' %}" class="img-circle img-responsive"
+                                     alt="docurated">
+                            </span>
+                <div class="testi-text">
+                    <p>" WriteWell is an exciting writing tool to help jumpstart your content marketing projects-
+                        blogs, ebooks, articles etc. "</p>
+                    <h4>Docurated</h4>
+                    <span class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-empty"></i>
+                                </span>
+                </div>
+            </div><!--testi box end-->
+        </div><!--col end-->
+    </div>
+</div>
+
+
+<div class="divide20">
+</div>
+<div class="container  template-link-list-all" >
+    <div class="row">
+        <div class="col-md-12 header">
+            More Popular Topics
+        </div>
+    </div>
+    <div class="row">
+
+                 {% for template in sorted_templates %}
+                            <div class=" col-md-4 template-link" onclick="parent.window.location='{% url 'template_page' template.slug %}'" >
+                                    {{ template.title }}
+                            </div>
+                        {% endfor %}
+
+    </div>
+</div>
+
+
+<div class="divide70"></div>
+
+<div class="modal video-modal fade video-z-index" id="video-popup" tabindex="-1" role="dialog"
+     aria-labelledby="video-popup">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"
+                                                                                                  class="fa fa-times"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe id="vimeo-video" src="https://www.youtube.com/embed/zhtK8-ka8l4"></iframe>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block js_extra %}
+<!--cube portfolio plugin-->
+<script src="{% static 'js/jquery.cubeportfolio.min.js' %}" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if($('#grid-container').cubeportfolio != null)
+		    //$('#grid-container').cubeportfolio('destroy');
+
+        $('#grid-container').cubeportfolio({
+        filters: '#filters-container',
+        loadMore: '#loadMore-container',
+        loadMoreAction: 'click',
+        layoutMode: 'grid',
+        gapHorizontal: 15,
+        gapVertical: 15,
+        gridAdjustment: 'responsive',
+        animationType: 'moveLeft',
+        {% if tag_results %}
+            defaultFilter: '.{{ tag_results.0.slug }}',
+        {% else %}
+             defaultFilter: '.college-paper-templates-and-formats',
+        {% endif %}
+        mediaQueries: [{
+            width: 1100,
+            cols: 4
+        }, {
+            width: 800,
+            cols: 4
+        }, {
+            width: 500,
+            cols: 2
+        }, {
+            width: 320,
+            cols: 1
+        }],
+        caption: 'overlayBottomReveal',
+        displayType: 'sequentially',
+        displayTypeSpeed: 80,
+
+
+    });
+    });
+</script>
+
+
+<script language="javascript" type="text/javascript">
+        var iframe_obj;
+        function resizeIframe(obj) {
+            iframe_obj = obj;
+            iframe_height = obj.contentWindow.document.body.clientHeight;
+            obj.style.height = obj.contentWindow.document.body.clientHeight + 'px';
+            setInterval(function () {
+                //   alert(iframe_height+" "+iframe_obj.style.height);
+                if (iframe_height != iframe_obj.style.height) {
+                    obj.style.height = iframe_obj.contentWindow.document.body.clientHeight + 'px';
+                    iframe_height = iframe_obj.contentWindow.document.body.clientHeight;
+                }
+
+            }, 500);
+        }
+
+        function show_template_desc(id, title, slug) {
+            $(".page-button").attr("data-slug", "");
+            $(".page-button").hide();
+            $("#desc_modal").modal();
+            $("#desc_modal").find(".loader-container").show();
+            $(".desc_body").html("");
+            $(".desc_body").hide();
+            $(".desc_title").html("Loading..");
+            $(".writing-button").hide();
+            $.get("https://app.writewellapp.com/getTemplateDetails?id=" + id, function (data) {
+                $("#desc_modal").find(".loader-container").hide();
+
+                $(".page-button").show();
+                $(".desc_body").show();
+                $(".writing-button").show();
+                $(".writing-button").attr("href", "http://app.writewellapp.com/" + slug);
+                $(".page-button").attr("data-slug", slug)
+                $(data.data[0].section).each(function (key, value) {
+                    $(".desc_title").html(title);
+                    $(".desc_body").append("<h4>" + value.title_placeholder + "<h4>")
+                    $(".desc_body").append("<p>" + value.section_placeholder);
+                });
+
+            }, "json")
+
+
+        }
+        $(document).ready(function () {
+             $('.desc_body').css({"max-height": $(window).innerHeight() * 80 / 100});
+            $(window).resize(function () {
+
+                $('.desc_body').css({"max-height": $(window).innerHeight() * 80 / 100});
+            });
+        });
+    </script>
+    <script>
+
+        function travel_next(obj) {
+            slug = $(obj).attr("data-slug");
+            if (slug) {
+                next_div = $("#grid-container").find("." + slug).nextAll("div").not(".cbp-item-off").first();
+                if (!$(next_div).length) {
+                    next_div = $("#grid-container").find(".cbp-item").not(".cbp-item-off").first();
+
+                }
+
+                next_title = $(next_div).find(".preview-button").attr("data-title");
+                next_id = $(next_div).find(".preview-button").attr("data-id");
+                next_slug = $(next_div).find(".preview-button").attr("data-slug");
+                show_template_desc(next_id, next_title, next_slug);
+
+            }
+        }
+        function travel_back(obj) {
+            slug = $(obj).attr("data-slug");
+
+            if (slug) {
+                next_div = $("#grid-container").find("." + slug).prevAll("div").not(".cbp-item-off").first();
+                if (!$(next_div).length) {
+                    next_div = $("#grid-container").find(".cbp-item").not(".cbp-item-off").last();
+
+                }
+
+                next_title = $(next_div).find(".preview-button").attr("data-title");
+                next_id = $(next_div).find(".preview-button").attr("data-id");
+                next_slug = $(next_div).find(".preview-button").attr("data-slug");
+                show_template_desc(next_id, next_title, next_slug);
+
+            }
+        }
+        function search_form_submit() {
+            search_term=$("#search_box").val();
+            if(search_term) {
+                $("#search_form").attr("action","https://app.writewellapp.com/#start-demo?q="+search_term);
+                $("#search_form").submit();
+            }
+        }
+
+    </script>
+
+{% endblock %}
